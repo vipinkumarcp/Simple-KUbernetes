@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+#metadata just names the object we are going to create
+metadata:
+  name: client-deployment
+spec:
+#no of different pods to create
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+#this configuration is using for every single pods 
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: stephengrider/multi-client
+          ports:
+            - containerPort: 3000

@@ -1,0 +1,16 @@
+#EACH API VERSION defines a different set of opbjects we can use
+apiVersion: v1
+#kind indicate the type of object we are making.every object has some purpose
+kind: Pod
+metadata:
+  name: client-pod
+  #labels to linking other file
+  labels:
+    component: web
+spec:
+  containers:
+    - name: client
+      image: stephengrider/multi-worker
+      #ON THIS CONTAINER NEED PORT 3000 NEED TO EXPOSE
+      ports:
+        - containerPort: 3000
